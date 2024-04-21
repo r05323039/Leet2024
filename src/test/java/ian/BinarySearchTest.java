@@ -8,7 +8,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BinarySearchTest {
     private final BinarySearch sut = new BinarySearch();
 
+    @Test
     public void testBasic() {
+        assertEquals(4, sut.basic(new int[]{-1, 0, 3, 5, 9, 12}, 9));
+        assertEquals(-1, sut.basic(new int[]{-1, 0, 3, 5, 9, 12}, 2));
+    }
+
+    @Test
+    public void basicRecursion() {
+        int[] nums = {-1, 0, 3, 5, 9, 12};
+        assertEquals(4, sut.basicRecursion(nums, 9));
+        assertEquals(-1, sut.basicRecursion(nums, 2));
     }
 
     public void testSearchInsert() {

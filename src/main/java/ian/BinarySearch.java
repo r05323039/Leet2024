@@ -1,5 +1,7 @@
 package ian;
 
+import java.util.Arrays;
+
 public class BinarySearch {
 
     public int basic(int[] nums, int target) {
@@ -18,6 +20,26 @@ public class BinarySearch {
             }
         }
         return -1;
+    }
+
+    public int basicRecursion(int[] nums, int target) {
+        return basicRecursion(nums, target, 0, nums.length);
+    }
+
+    private int basicRecursion(int[] nums, int target, int left, int right) {
+        if (left >= right) {
+            return -1;
+        }
+
+        int middle = left + right >>> 1;
+
+        if (target < nums[middle]) {
+            return basicRecursion(nums, target, left, middle);
+        } else if (nums[middle] < target) {
+            return basicRecursion(nums, target, middle + 1, right);
+        } else {
+            return middle;
+        }
     }
 
     public int searchInsert(int[] nums, int target) {
