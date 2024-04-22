@@ -26,4 +26,14 @@ class RecursionTest {
         sut.sort(nums);
         assertArrayEquals(new int[]{1, 2, 3, 4, 5}, nums);
     }
+
+    @Test
+    void fibonacci() {
+        assertEquals(1, sut.fibonacci(1));
+        assertEquals(1, sut.fibonacci(2));
+        assertEquals(2, sut.fibonacci(3));
+        assertEquals(3, sut.fibonacci(4));
+        assertEquals(5, sut.fibonacci(5));
+        assertEquals(8, sut.fibonacci(6));
+    }
 }

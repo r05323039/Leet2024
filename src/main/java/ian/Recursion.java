@@ -1,5 +1,7 @@
 package ian;
 
+import java.util.Arrays;
+
 public class Recursion {
 
     public int factorial(int n) {
@@ -37,5 +39,22 @@ public class Recursion {
             }
         }
         sort(num, r);
+    }
+
+    public int fibonacci(int n) {
+        int[] cache = new int[n + 1];//避免重複計算
+        Arrays.fill(cache, -1);
+        cache[0] = 0;
+        cache[1] = 1;
+
+        return fibonacciCalculate(n, cache);
+    }
+
+    private int fibonacciCalculate(int n, int[] cache) {
+        if (cache[n] != -1) {
+            return cache[n];
+        }
+        cache[n] = fibonacciCalculate(n - 1, cache) + fibonacciCalculate(n - 2, cache);
+        return cache[n];
     }
 }
