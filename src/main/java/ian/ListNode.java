@@ -28,10 +28,10 @@ public class ListNode {
         for (int i = n; i >= 1; i--) {
             head = new ListNode(i, head);
         }
-        System.out.println(head);
         return head;
     }
 
+    // 反轉鏈表
     public static ListNode reverseList(ListNode head) {
         // 206.
         ListNode newNode = null;
@@ -98,6 +98,7 @@ public class ListNode {
         return head2;
     }
 
+    // 指定值，移除鏈表
     public static ListNode removeElements(ListNode node, int val) {
         // 203.
         ListNode sentinel = new ListNode(0, null);
@@ -127,14 +128,15 @@ public class ListNode {
         }
     }
 
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    //移除倒數第n個鏈表
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
         // 19.
         ListNode sentinel = new ListNode(-1, head);
         endIndex(sentinel, n);
         return sentinel.next;
     }
 
-    private int endIndex(ListNode head, int n) {
+    private static int endIndex(ListNode head, int n) {
         if (head == null) {
             return 0;
         }
@@ -145,21 +147,58 @@ public class ListNode {
         return nextBackIndex + 1;
     }
 
-    public ListNode removeNthFromEnd2(ListNode head, int n) {
+    public static ListNode removeNthFromEnd2(ListNode head, int n) {
         // 19.
         ListNode sentinel = new ListNode(-1, head);
-// p1,p2距離為刪除了倒序n , p2指向null時，讓p1指向刪除目標的前一個
+        // p1,p2距離為刪除了倒序n , p2指向null時，讓p1指向刪除目標的前一個
         ListNode p1 = sentinel;// p1         p2
         ListNode p2 = sentinel;//    deleted null
         for (int i = 1; i <= n + 1; i++) {
             p2 = p2.next;
         }
-        while (p2 != null){
+        while (p2 != null) {
             p2 = p2.next;
             p1 = p1.next;
         }
 
         p1.next = p1.next.next;
         return sentinel.next;
+    }
+
+    //移除重複值
+    public static ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode p1 = head;
+        ListNode p2 = head.next;
+
+        while (p2 != null) {
+            if (p1.value == p2.value) {
+                p2 = p2.next;
+                p1.next = p2;
+            } else {
+                p2 = p2.next;
+                p1 = p1.next;
+            }
+        }
+        return head;
+    }
+
+    public static ListNode deleteDuplicates2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode next = deleteDuplicates2(head.next);
+        if (next.value == head.value) {
+            head.next = next.next;
+        }
+        return head;
+    }
+
+    //重複值，全部移除
+    public static ListNode deleteAllDuplicates(ListNode head) {
+        return head;
     }
 }
