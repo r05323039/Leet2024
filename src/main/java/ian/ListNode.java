@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class ListNode {
-    int value;
+    int val;
     ListNode next;
 
     @Override
@@ -13,7 +13,7 @@ public class ListNode {
         sb.append("[");
         ListNode node = this;
         while (node != null) {
-            sb.append(node.value);
+            sb.append(node.val);
             if (node.next != null) {
                 sb.append(", ");
             }
@@ -37,7 +37,7 @@ public class ListNode {
         ListNode newNode = null;
         ListNode p = head;
         while (p != null) {
-            newNode = new ListNode(p.value, newNode);
+            newNode = new ListNode(p.val, newNode);
             p = p.next;
         }
         return newNode;
@@ -106,7 +106,7 @@ public class ListNode {
         while (node != null) {
             ListNode next = node.next;
             node.next = null;//斷開舊的聯繫，單獨排查
-            if (node.value != val) {
+            if (node.val != val) {
                 p.next = node;
                 p = node;
             }
@@ -120,7 +120,7 @@ public class ListNode {
             return null;
         }
 
-        if (node.value == val) {
+        if (node.val == val) {
             return removeElements2(node.next, val);
         } else {
             node.next = removeElements2(node.next, val);
@@ -174,7 +174,7 @@ public class ListNode {
         ListNode p2 = head.next;
 
         while (p2 != null) {
-            if (p1.value == p2.value) {
+            if (p1.val == p2.val) {
                 p2 = p2.next;
                 p1.next = p2;
             } else {
@@ -191,7 +191,7 @@ public class ListNode {
         }
 
         ListNode next = deleteDuplicates2(head.next);
-        if (next.value == head.value) {
+        if (next.val == head.val) {
             head.next = next.next;
         }
         return head;
@@ -199,6 +199,26 @@ public class ListNode {
 
     //重複值，全部移除
     public static ListNode deleteAllDuplicates(ListNode head) {
-        return head;
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode s = new ListNode(-1, null);
+        ListNode checked = s;
+        ListNode p1 = head;
+        ListNode p2 = head.next;
+        while (p2 != null) {
+            int dup = p1.val;
+            if (dup != p2.val) {
+                checked.next = p1;
+                checked = p1;
+            } else {
+                while (p2 != null && dup == p2.val) {
+                    p2 = p2.next;
+                }
+            }
+            p1 = p2;
+            p2 = p2.next;
+        }
+        return s.next;
     }
 }
