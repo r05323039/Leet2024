@@ -23,12 +23,13 @@ public class ListNode {
         return sb.toString();
     }
 
-    public static ListNode init() {
-        ListNode n3 = new ListNode(3, null);
-        ListNode n2 = new ListNode(2, n3);
-        ListNode n1 = new ListNode(1, n2);
-        System.out.println(n1);
-        return n1;
+    public static ListNode init(int n) {
+        ListNode head = null;
+        for (int i = n; i >= 1; i--) {
+            head = new ListNode(i, head);
+        }
+        System.out.println(head);
+        return head;
     }
 
     public static ListNode reverseList(ListNode head) {
@@ -98,6 +99,7 @@ public class ListNode {
     }
 
     public static ListNode removeElements(ListNode node, int val) {
+        // 203.
         ListNode sentinel = new ListNode(0, null);
         ListNode p = sentinel;
         while (node != null) {
@@ -109,6 +111,55 @@ public class ListNode {
             }
             node = next;
         }
+        return sentinel.next;
+    }
+
+    public static ListNode removeElements2(ListNode node, int val) {
+        if (node == null) {
+            return null;
+        }
+
+        if (node.value == val) {
+            return removeElements2(node.next, val);
+        } else {
+            node.next = removeElements2(node.next, val);
+            return node;
+        }
+    }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        // 19.
+        ListNode sentinel = new ListNode(-1, head);
+        endIndex(sentinel, n);
+        return sentinel.next;
+    }
+
+    private int endIndex(ListNode head, int n) {
+        if (head == null) {
+            return 0;
+        }
+        int nextBackIndex = endIndex(head.next, n);
+        if (nextBackIndex == n) {
+            head.next = head.next.next;
+        }
+        return nextBackIndex + 1;
+    }
+
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+        // 19.
+        ListNode sentinel = new ListNode(-1, head);
+// p1,p2距離為刪除了倒序n , p2指向null時，讓p1指向刪除目標的前一個
+        ListNode p1 = sentinel;// p1         p2
+        ListNode p2 = sentinel;//    deleted null
+        for (int i = 1; i <= n + 1; i++) {
+            p2 = p2.next;
+        }
+        while (p2 != null){
+            p2 = p2.next;
+            p1 = p1.next;
+        }
+
+        p1.next = p1.next.next;
         return sentinel.next;
     }
 }
