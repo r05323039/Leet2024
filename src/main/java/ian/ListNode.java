@@ -23,7 +23,16 @@ public class ListNode {
         return sb.toString();
     }
 
+    public static ListNode init() {
+        ListNode n3 = new ListNode(3, null);
+        ListNode n2 = new ListNode(2, n3);
+        ListNode n1 = new ListNode(1, n2);
+        System.out.println(n1);
+        return n1;
+    }
+
     public static ListNode reverseList(ListNode head) {
+        // 206.
         ListNode newNode = null;
         ListNode p = head;
         while (p != null) {
@@ -66,7 +75,7 @@ public class ListNode {
         return newHead;
     }
 
-    private static ListNode reverseList4(ListNode node) {
+    public static ListNode reverseList4(ListNode node) {
         /**
          * 1 -> 2 -> 3 -> null
          * null
@@ -88,23 +97,18 @@ public class ListNode {
         return head2;
     }
 
-
-    public static void main(String[] args) {
-        System.out.println(ListNode.reverseList(init()));
-        System.out.println("----");
-        System.out.println(ListNode.reverseList2(init()));
-        System.out.println("----");
-        System.out.println(ListNode.reverseList3(init()));
-        System.out.println("----");
-        System.out.println(ListNode.reverseList4(init()));
-        System.out.println("----");
-    }
-
-    private static ListNode init() {
-        ListNode n3 = new ListNode(3, null);
-        ListNode n2 = new ListNode(2, n3);
-        ListNode n1 = new ListNode(1, n2);
-        System.out.println(n1);
-        return n1;
+    public static ListNode removeElements(ListNode node, int val) {
+        ListNode sentinel = new ListNode(0, null);
+        ListNode p = sentinel;
+        while (node != null) {
+            ListNode next = node.next;
+            node.next = null;//斷開舊的聯繫，單獨排查
+            if (node.value != val) {
+                p.next = node;
+                p = node;
+            }
+            node = next;
+        }
+        return sentinel.next;
     }
 }
