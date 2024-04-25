@@ -68,18 +68,18 @@ class ListNodeTest {
 
     @Test
     void deleteAllDuplicates() {
-        System.out.println(getNodes(3, 4, 6, 2));
-    }
+        System.out.println(getNodes(1, 1, 2, 2, 4, 5, 6, 6));
+        expected = "[4, 5]";
+        assertEqual(ListNode.deleteAllDuplicates(getNodes(1, 1, 2, 2, 4, 5, 6, 6)));
+        assertEqual(ListNode.deleteAllDuplicates2(getNodes(1, 1, 2, 2, 4, 5, 6, 6)));
 
-    private ListNode getDuplicateNodes() {
-        ListNode list = getNodes(1, 2, 3, 4, 5);
-        ListNode head = new ListNode(1, list);
-        ListNode p = head;
-        while (p.next != null) {
-            p = p.next;
-        }
-        p.next = new ListNode(5, null);
-        return head;
+
+
+        System.out.println(getNodes(1, 1, 2, 2, 4, 5, 6));
+        expected = "[4, 5, 6]";
+        assertEqual(ListNode.deleteAllDuplicates(getNodes(1, 1, 2, 2, 4, 5, 6)));
+        assertEqual(ListNode.deleteAllDuplicates2(getNodes(1, 1, 2, 2, 4, 5, 6)));
+
     }
 
     private ListNode getNodes(int... val) {

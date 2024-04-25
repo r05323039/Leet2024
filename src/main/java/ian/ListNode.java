@@ -23,14 +23,6 @@ public class ListNode {
         return sb.toString();
     }
 
-    public static ListNode init(int n) {
-        ListNode head = null;
-        for (int i = n; i >= 1; i--) {
-            head = new ListNode(i, head);
-        }
-        return head;
-    }
-
     // 反轉鏈表
     public static ListNode reverseList(ListNode head) {
         // 206.
@@ -197,28 +189,40 @@ public class ListNode {
         return head;
     }
 
-    //重複值，全部移除
+    //移除所有重複值
     public static ListNode deleteAllDuplicates(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode s = new ListNode(-1, null);
-        ListNode checked = s;
-        ListNode p1 = head;
-        ListNode p2 = head.next;
-        while (p2 != null) {
-            int dup = p1.val;
-            if (dup != p2.val) {
-                checked.next = p1;
-                checked = p1;
-            } else {
-                while (p2 != null && dup == p2.val) {
-                    p2 = p2.next;
+        ListNode sentinel = new ListNode(-1, head);
+        ListNode checked = sentinel;
+        ListNode p1, p2;
+
+        while ((p1 = checked.next) != null && (p2 = p1.next) != null) {
+            if (p1.val == p2.val) {
+                while ((p2 = p2.next) != null && p1.val == p2.val) {
+
                 }
+                checked.next = p2;
+            } else {
+                checked = p1;
             }
-            p1 = p2;
-            p2 = p2.next;
         }
-        return s.next;
+        return sentinel.next;
+    }
+
+    public static ListNode deleteAllDuplicates2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode next = head.next;
+        if (head.val == next.val) {
+            while (next != null && head.val == next.val) {
+                next = next.next;
+            }
+            return deleteAllDuplicates2(next);
+        }
+        head.next = deleteAllDuplicates2(next);
+        return head;
     }
 }
