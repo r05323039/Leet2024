@@ -1,7 +1,7 @@
 package ian;
 
-public class DeleteDuplicates extends ListNode{
-    public DeleteDuplicates(int val, ListNode next) {
+public class DeleteDuplicates83 extends ListNode{
+    public DeleteDuplicates83(int val, ListNode next) {
         super(val, next);
     }
     public static ListNode deleteDuplicates(ListNode head) {
