@@ -201,7 +201,6 @@ public class ListNode {
         while ((p1 = checked.next) != null && (p2 = p1.next) != null) {
             if (p1.val == p2.val) {
                 while ((p2 = p2.next) != null && p1.val == p2.val) {
-
                 }
                 checked.next = p2;
             } else {
