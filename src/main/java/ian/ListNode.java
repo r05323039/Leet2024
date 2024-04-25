@@ -207,6 +207,7 @@ public class ListNode {
                 checked = p1;
             }
         }
+        
         return sentinel.next;
     }
 
