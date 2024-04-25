@@ -36,4 +36,19 @@ public class ListNode extends TestModel {
         return sentinel.next;
     }
 
+    protected static int count(ListNode head) {
+        int sum = 0;
+        while (head != null) {
+            sum++;
+            head = head.next;
+        }
+        return sum;
+    }
+
+    protected static ListNode findTail(ListNode list) {
+        while (list != null && list.next != null) {
+            list = list.next;
+        }
+        return list;
+    }
 }

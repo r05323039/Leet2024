@@ -18,12 +18,7 @@ public class MergeTwoLists21 extends ListNode {
         return recursionSorted(head);
     }
 
-    private static ListNode findTail(ListNode list) {
-        while (list != null && list.next != null) {
-            list = list.next;
-        }
-        return list;
-    }
+
 
     private static ListNode recursionSorted(ListNode node) {
         if (node == null || node.next == null) {
