@@ -224,5 +224,4 @@ public class ListNode {
         head.next = deleteAllDuplicates2(next);
         return head;
     }
-    
 }
