@@ -74,7 +74,6 @@ class ListNodeTest {
         assertEqual(ListNode.deleteAllDuplicates2(getNodes(1, 1, 2, 2, 4, 5, 6, 6)));
 
 
-
         System.out.println(getNodes(1, 1, 2, 2, 4, 5, 6));
         expected = "[4, 5, 6]";
         assertEqual(ListNode.deleteAllDuplicates(getNodes(1, 1, 2, 2, 4, 5, 6)));
@@ -91,5 +90,15 @@ class ListNodeTest {
             p = newNode;
         }
         return sentinel.next;
+    }
+
+    @Test
+    void mergeTwoLists() {
+        System.out.println(getNodes(1, 2, 4) + " ," + getNodes(1, 3, 4));
+        expected = "[1, 1, 2, 3, 4, 4]";
+        assertEqual(ListNode.mergeTwoLists(getNodes(1, 2, 4), getNodes(1, 3, 4)));
+        assertEqual(ListNode.mergeTwoLists2(getNodes(1, 2, 4), getNodes(1, 3, 4)));
+        assertEqual(ListNode.mergeTwoLists3(getNodes(1, 2, 4), getNodes(1, 3, 4)));
+
     }
 }
