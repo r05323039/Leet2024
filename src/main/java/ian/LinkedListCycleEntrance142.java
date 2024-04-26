@@ -9,59 +9,40 @@ public class LinkedListCycleEntrance142 extends ListNode {
 
     public static ListNode findCircleEntrance(ListNode node) {
         if (node == null || node.next == null) {
-            throw new IllegalArgumentException("This is not a circular link.");
+            return null;
         }
         ListNode head = node;
 
-        ListNode p1 = head.next;
-        ListNode p2 = head.next.next;
+        ListNode p1 = head;
+        ListNode p2 = head;
         while (p2 != null && p2.next != null) {
+
+            p1 = p1.next;
+            p2 = p2.next.next;
+
             if (p1 == p2) {
                 p1 = head;
                 while (true) {
-                    p1 = p1.next;
-                    p2 = p2.next;
                     if (p1 == p2) {
                         return p1;
                     }
+                    p1 = p1.next;
+                    p2 = p2.next;
                 }
             }
-            p1 = p1.next;
-            p2 = p2.next.next;
         }
-        throw new IllegalArgumentException("This is not a circular link.");
+        return null;
     }
 
-    public static boolean isCircular(ListNode node) {
-        if (node == null || node.next == null) {
-            return false;
-        }
-        ListNode head = node;
-
-        ListNode p1 = head.next;
-        ListNode p2 = head.next.next;
-        while (p2 != null && p2.next != null) {
-            if (p1 == p2) {
-                return true;
-            }
-            p1 = p1.next;
-            p2 = p2.next.next;
-        }
-        return false;
-    }
 
     public static void main(String[] args) {
-//        ListNode n1 = getNodes(1, 2, 3);
-//        System.out.println(n1);
-//        Assertions.assertFalse(isCircular(n1));
-//
-//        ListNode n2 = getNodes(1, 2, 3);
-//        findTail(n2).next = n2;
-//        Assertions.assertTrue(isCircular(n2));
+        ListNode node = getNodes(1, 2, 3, 4, 5);
+        ListNode tail = findTail(node);
+        tail.next = node.next.next;
+        System.out.println(findCircleEntrance(node).val);
 
-        ListNode n3 = getNodes(1, 2, 3, 4, 5);
-        ListNode tail = findTail(n3);
-        tail.next = n3.next.next;
-        System.out.println(findCircleEntrance(n3));
+        ListNode node2 = getNodes(1, 2);
+        node2.next.next = node2;
+        System.out.println(findCircleEntrance(node2).val);
     }
 }
