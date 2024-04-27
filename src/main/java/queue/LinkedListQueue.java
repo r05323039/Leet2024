@@ -1,17 +1,23 @@
 package queue;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
+@NoArgsConstructor
 public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
     private Node<E> head = new Node<>(null, null);
     private Node<E> tail = head;
+    private int size = 0;
+    private int capacity = Integer.MAX_VALUE;
 
-    public LinkedListQueue() {
-        tail.next = head;
+    {
+        tail.next = head;//所有建構子都調用
+    }
+
+    public LinkedListQueue(int capacity) {
+        this.capacity = capacity;
     }
 
     @AllArgsConstructor
@@ -22,28 +28,47 @@ public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
 
     @Override
     public boolean offer(E value) {
-        if (value == null) {
+        if (isFull()) {
             return false;
         }
         Node<E> added = new Node<>(value, head);
         tail.next = added;
         tail = added;
+        size++;
         return true;
     }
 
     @Override
     public E poll() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node<E> removed = head.next;
+        head.next = removed.next;
+        if (removed == tail) {
+            tail.next = head;
+        }
+        size--;
+        return removed.value;
     }
 
     @Override
     public E peek() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        return head.next.value;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return head == tail;
+    }
+
+    @Override
+    public boolean isFull() {
+        return size == capacity;
     }
 
     @Override
@@ -63,15 +88,5 @@ public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
                 return value;
             }
         };
-    }
-
-    @Override
-    public void forEach(Consumer<? super E> action) {
-        Iterable.super.forEach(action);
-    }
-
-    @Override
-    public Spliterator<E> spliterator() {
-        return Iterable.super.spliterator();
     }
 }

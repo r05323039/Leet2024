@@ -9,4 +9,6 @@ public interface Quene<E> {
     E peek();
 
     boolean isEmpty();
+
+    boolean isFull();
 }
