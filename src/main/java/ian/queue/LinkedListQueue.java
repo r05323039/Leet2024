@@ -47,7 +47,7 @@ public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
         Node<E> removed = head.next;
         head.next = removed.next;
         if (removed == tail) {
-            tail.next = head;
+            tail = head;
         }
         size--;
         return removed.value;
