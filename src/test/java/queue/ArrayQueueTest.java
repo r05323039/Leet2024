@@ -13,7 +13,7 @@ class ArrayQueueTest {
 
     @BeforeEach
     void setUp() {
-        sut = new ArrayQueue<>();
+        sut = new ArrayQueue<>(4);
     }
 
     @Test
@@ -52,10 +52,12 @@ class ArrayQueueTest {
 
     @Test
     void isFull() {
-        LinkedListQueue<Object> queue = new LinkedListQueue<>(2);
-        assertTrue(queue.offer(1));
-        assertTrue(queue.offer(2));
-        assertFalse(queue.offer(3));
+        assertFalse(sut.isFull());
+        sut.offer(1);
+        sut.offer(1);
+        sut.offer(1);
+        sut.offer(1);
+        assertTrue(sut.isFull());
     }
 
     @Test
