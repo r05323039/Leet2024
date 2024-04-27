@@ -1,7 +1,5 @@
 package ian;
 
-import java.util.Arrays;
-
 public class BinarySearch {
 
     public int basic(int[] nums, int target) {

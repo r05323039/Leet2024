@@ -1,5 +1,7 @@
 package ian;
 
+import ian.linkedList.ListNode;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestModel {

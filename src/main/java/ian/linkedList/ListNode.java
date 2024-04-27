@@ -1,8 +1,7 @@
-package ian;
+package ian.linkedList;
 
+import ian.TestModel;
 import lombok.AllArgsConstructor;
-
-import java.util.Arrays;
 
 @AllArgsConstructor
 public class ListNode extends TestModel {

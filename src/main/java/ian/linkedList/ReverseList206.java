@@ -1,4 +1,6 @@
-package ian;
+package ian.linkedList;
+
+import ian.linkedList.ListNode;
 
 public class ReverseList206 extends ListNode {
     public ReverseList206(int val, ListNode next) {

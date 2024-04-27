@@ -1,7 +1,5 @@
 package ian;
 
-import java.util.Arrays;
-
 public class PascalTriangle {
 
     /**

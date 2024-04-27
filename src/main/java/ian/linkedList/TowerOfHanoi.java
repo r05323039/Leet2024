@@ -1,4 +1,4 @@
-package ian;
+package ian.linkedList;
 
 import java.util.LinkedList;
 

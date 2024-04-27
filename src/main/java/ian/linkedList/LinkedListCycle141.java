@@ -1,4 +1,4 @@
-package ian;
+package ian.linkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 

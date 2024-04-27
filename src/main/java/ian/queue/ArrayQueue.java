@@ -1,4 +1,4 @@
-package queue;
+package ian.queue;
 
 import java.util.Iterator;
 

@@ -1,4 +1,4 @@
-package ian;
+package ian.linkedList;
 
 
 public class LinkedListCycleEntrance142 extends ListNode {

@@ -1,7 +1,6 @@
-package ian;
+package ian.linkedList;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 public class MiddleNode876 extends ListNode {
     public MiddleNode876(int val, ListNode next) {

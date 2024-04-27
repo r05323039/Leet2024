@@ -1,4 +1,4 @@
-package queue;
+package ian.queue;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

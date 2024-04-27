@@ -1,4 +1,6 @@
-package ian;
+package ian.linkedList;
+
+import ian.TestModel;
 
 public class DeleteDuplicates83 extends ListNode{
     public DeleteDuplicates83(int val, ListNode next) {
@@ -37,8 +39,8 @@ public class DeleteDuplicates83 extends ListNode{
 
     public static void main(String[] args) {
         System.out.println(getNodes(1, 1, 2, 3, 4, 5, 5));
-        expected = "[1, 2, 3, 4, 5]";
-        assertEqual(deleteDuplicates(getNodes(1, 1, 2, 3, 4, 5, 5)));
-        assertEqual(deleteDuplicates2(getNodes(1, 1, 2, 3, 4, 5, 5)));
+        TestModel.expected = "[1, 2, 3, 4, 5]";
+        TestModel.assertEqual(deleteDuplicates(getNodes(1, 1, 2, 3, 4, 5, 5)));
+        TestModel.assertEqual(deleteDuplicates2(getNodes(1, 1, 2, 3, 4, 5, 5)));
     }
 }
