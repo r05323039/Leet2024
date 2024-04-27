@@ -7,13 +7,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LinkedListQueueTest {
+class ArrayQueueTest {
 
-    private LinkedListQueue<Integer> sut;
+    private ArrayQueue<Integer> sut;
 
     @BeforeEach
     void setUp() {
-        sut = new LinkedListQueue<>();
+        sut = new ArrayQueue<>();
     }
 
     @Test
@@ -64,7 +64,7 @@ class LinkedListQueueTest {
         sut.offer(2);
         sut.offer(3);
         int expected = 1;
-        for (int o : sut) {
+        for (Object o : sut) {
             assertEquals(expected++, o);
         }
     }
