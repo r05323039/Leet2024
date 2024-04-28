@@ -1,4 +1,4 @@
-package queue;
+package ian.queue;
 
 import ian.queue.ArrayQueue;
 import org.junit.jupiter.api.BeforeEach;
