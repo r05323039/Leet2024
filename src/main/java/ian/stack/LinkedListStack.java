@@ -1,22 +1,16 @@
-package ian.queue;
+package ian.stack;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.Iterator;
 
-@NoArgsConstructor
-public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
+public class LinkedListStack<E> implements Stack<E>, Iterable<E> {
+
     private Node<E> head = new Node<>(null, null);
-    private Node<E> tail = head;
+    private int capacity;
     private int size = 0;
-    private int capacity = Integer.MAX_VALUE;
 
-    {
-        tail.next = head;//所有建構子都調用
-    }
-
-    public LinkedListQueue(int capacity) {
+    public LinkedListStack(int capacity) {
         this.capacity = capacity;
     }
 
@@ -27,30 +21,25 @@ public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
     }
 
     @Override
-    public boolean offer(E value) {
+    public boolean push(E value) {
         if (isFull()) {
             return false;
         }
         Node<E> added = new Node<>(value, head);
-        tail.next = added;
-        tail = added;
+        head = added;
         size++;
         return true;
     }
 
     @Override
-    public E poll() {
+    public E pop() {
         if (isEmpty()) {
             return null;
         }
-
-        Node<E> removed = head.next;
-        head.next = removed.next;
-        if (removed == tail) {
-            tail = head;
-        }
+        Node<E> pop = head;
+        head = head.next;
         size--;
-        return removed.value;
+        return pop.value;
     }
 
     @Override
@@ -58,27 +47,27 @@ public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
         if (isEmpty()) {
             return null;
         }
-        return head.next.value;
+        return head.value;
     }
 
     @Override
     public boolean isEmpty() {
-        return head == tail;
+        return size == 0;
     }
 
     @Override
     public boolean isFull() {
-        return size == capacity;
+        return capacity == size;
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            private Node<E> p = head.next;//指向哨兵之外第一個元素
+            private Node<E> p = head;
 
             @Override
             public boolean hasNext() {
-                return p != head;
+                return p.next != null;
             }
 
             @Override
