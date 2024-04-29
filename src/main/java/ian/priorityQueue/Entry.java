@@ -1,6 +1,9 @@
 package ian.priorityQueue;
 
-public class Entity implements Priority{
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class Entry implements Priority{
 
     private String name;
     private int priority;
