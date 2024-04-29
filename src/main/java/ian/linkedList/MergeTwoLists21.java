@@ -1,5 +1,7 @@
 package ian.linkedList;
 
+import ian.ListNode;
+
 public class MergeTwoLists21 extends ListNode {
     public MergeTwoLists21(int val, ListNode next) {
         super(val, next);

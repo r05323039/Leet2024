@@ -1,6 +1,6 @@
 package ian.linkedList;
 
-import ian.linkedList.ListNode;
+import ian.ListNode;
 
 public class RemoveElements203 extends ListNode {
     public RemoveElements203(int val, ListNode next) {

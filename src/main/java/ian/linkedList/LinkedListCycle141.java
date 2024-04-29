@@ -1,5 +1,7 @@
 package ian.linkedList;
 
+import ian.ListNode;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LinkedListCycle141 extends ListNode {

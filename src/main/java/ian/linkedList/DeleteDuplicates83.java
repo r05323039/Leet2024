@@ -1,8 +1,9 @@
 package ian.linkedList;
 
+import ian.ListNode;
 import ian.TestModel;
 
-public class DeleteDuplicates83 extends ListNode{
+public class DeleteDuplicates83 extends ListNode {
     public DeleteDuplicates83(int val, ListNode next) {
         super(val, next);
     }

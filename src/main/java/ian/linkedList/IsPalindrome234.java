@@ -1,5 +1,6 @@
 package ian.linkedList;
 
+import ian.ListNode;
 import org.junit.jupiter.api.Assertions;
 
 public class IsPalindrome234 extends ListNode {

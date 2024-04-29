@@ -1,12 +1,11 @@
-package ian.linkedList;
+package ian;
 
-import ian.TestModel;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class ListNode extends TestModel {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     @Override
     public String toString() {

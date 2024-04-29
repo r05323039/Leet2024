@@ -1,15 +1,14 @@
-package ian.queue;
+package ian;
 
-import ian.TestModel;
 import lombok.AllArgsConstructor;
 
 import java.util.LinkedList;
 
 @AllArgsConstructor
-class TreeNode extends TestModel {
-    int val;
-    TreeNode left;
-    TreeNode right;
+public class TreeNode extends TestModel {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode(int val) {
         this.val = val;

@@ -1,6 +1,6 @@
 package ian.linkedList;
 
-import ian.linkedList.ListNode;
+import ian.ListNode;
 
 public class removeNthFromEnd19 extends ListNode {
     public removeNthFromEnd19(int val, ListNode next) {

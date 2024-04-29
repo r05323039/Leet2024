@@ -1,6 +1,8 @@
 package ian.linkedList;
 
 
+import ian.ListNode;
+
 public class LinkedListCycleEntrance142 extends ListNode {
     public LinkedListCycleEntrance142(int val, ListNode next) {
         super(val, next);
