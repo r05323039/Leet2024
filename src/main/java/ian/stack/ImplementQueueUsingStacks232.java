@@ -7,10 +7,6 @@ public class ImplementQueueUsingStacks232 {
         private Stack<Integer> out = new Stack<>();
         private Stack<Integer> in = new Stack<>();
 
-        public MyQueue() {
-
-        }
-
         public void push(int x) {
             in.push(x);
         }
