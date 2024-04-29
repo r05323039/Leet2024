@@ -2,7 +2,7 @@ package ian;
 
 import java.util.Arrays;
 
-public class Recursion {
+class Recursion {
 
     public int factorial(int n) {
         if (n == 1) {

@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BinaryTreeLevelOrderTraversal102 extends TreeNode {
+class BinaryTreeLevelOrderTraversal102 extends TreeNode {
     public BinaryTreeLevelOrderTraversal102(int val, TreeNode left, TreeNode right) {
         super(val, left, right);
     }

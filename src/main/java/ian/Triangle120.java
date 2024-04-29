@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 
-public class Triangle120 extends TestModel {
+class Triangle120 extends TestModel {
 
     Integer[][] memory;
 
@@ -29,7 +29,7 @@ public class Triangle120 extends TestModel {
         int right = minimumTotal(triangle, row + 1, column + 1);
 
         memory[row][column] = value + Math.min(left, right);
-        
+
         return memory[row][column];
     }
 

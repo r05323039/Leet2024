@@ -1,6 +1,6 @@
 package ian;
 
-public class PascalTriangle {
+class PascalTriangle {
 
     /**
      * 1

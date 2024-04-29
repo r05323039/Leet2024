@@ -1,6 +1,6 @@
 package ian;
 
-public class BinarySearch {
+class BinarySearch {
 
     public int basic(int[] nums, int target) {
         // 704

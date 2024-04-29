@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import java.util.LinkedList;
 
 @AllArgsConstructor
-public class TreeNode extends TestModel {
+class TreeNode extends TestModel {
     int val;
     TreeNode left;
     TreeNode right;

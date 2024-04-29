@@ -1,14 +1,13 @@
 package ian.stack;
 
 import ian.TestModel;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ValidParentheses20 extends TestModel {
+class ValidParentheses20 extends TestModel {
 
     public static boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();

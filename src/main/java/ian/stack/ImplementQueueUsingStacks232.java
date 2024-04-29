@@ -2,7 +2,7 @@ package ian.stack;
 
 import java.util.Stack;
 
-public class ImplementQueueUsingStacks232 {
+class ImplementQueueUsingStacks232 {
     static class MyQueue {
         private Stack<Integer> out = new Stack<>();
         private Stack<Integer> in = new Stack<>();

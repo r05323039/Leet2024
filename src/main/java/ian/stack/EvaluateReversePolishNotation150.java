@@ -5,7 +5,7 @@ import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EvaluateReversePolishNotation150 {
+class EvaluateReversePolishNotation150 {
     public static int evalRPN(String[] tokens) {
         List<String> operators = List.of("+", "-", "*", "/");
         Stack<String> stack = new Stack<>();

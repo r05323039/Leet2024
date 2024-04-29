@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import java.util.Iterator;
 
 @NoArgsConstructor
-public class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
+class LinkedListQueue<E> implements Quene<E>, Iterable<E> {
     private Node<E> head = new Node<>(null, null);
     private Node<E> tail = head;
     private int size = 0;

@@ -1,13 +1,11 @@
 package ian.stack;
 
-import org.junit.jupiter.api.Assertions;
-
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class ImplementStackUsingQueues225 {
+class ImplementStackUsingQueues225 {
     static class MyStack {
 
         private LinkedList<Integer> queue1 = new LinkedList<>();

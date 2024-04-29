@@ -2,7 +2,7 @@ package ian.stack;
 
 import java.util.Iterator;
 
-public class ArrayStack<E> implements Stack<E>, Iterable<E> {
+class ArrayStack<E> implements Stack<E>, Iterable<E> {
     private E[] array;
     private int head = 0;
 

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.Iterator;
 
-public class LinkedListStack<E> implements Stack<E>, Iterable<E> {
+class LinkedListStack<E> implements Stack<E>, Iterable<E> {
 
     private Node<E> head = new Node<>(null, null);
     private int capacity;

@@ -4,7 +4,7 @@ import ian.TestModel;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class ListNode extends TestModel {
+class ListNode extends TestModel {
     int val;
     ListNode next;
 

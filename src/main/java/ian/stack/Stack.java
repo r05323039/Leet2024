@@ -1,6 +1,6 @@
 package ian.stack;
 
-public interface Stack<E> {
+interface Stack<E> {
 
     boolean push(E value);
 

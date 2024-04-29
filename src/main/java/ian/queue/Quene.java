@@ -1,6 +1,6 @@
 package ian.queue;
 
-public interface Quene<E> {
+interface Quene<E> {
 
     boolean offer(E value);
 
