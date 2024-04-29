@@ -1,8 +1,5 @@
 package ian.stack;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.List;
 import java.util.Stack;
 
