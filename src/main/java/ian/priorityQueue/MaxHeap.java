@@ -2,12 +2,12 @@ package ian.priorityQueue;
 
 import ian.queue.Queue;
 
-public class PriorityQueue3<E extends Priority> implements Queue<E> {
+public class MaxHeap<E extends Priority> implements Queue<E> {
 
     E[] array;
     int size;
 
-    public PriorityQueue3(int capacity) {
+    public MaxHeap(int capacity) {
         this.array = (E[]) new Priority[capacity];
     }
 

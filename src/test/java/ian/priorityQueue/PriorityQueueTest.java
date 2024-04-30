@@ -24,7 +24,7 @@ class PriorityQueueTest {
 
     @Test
     void test3() {
-        PriorityQueue3<Priority> sut = new PriorityQueue3<>(5);
+        MaxHeap<Priority> sut = new MaxHeap<>(5);
         runTest(sut);
     }
 
