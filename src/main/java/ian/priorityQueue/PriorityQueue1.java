@@ -1,8 +1,8 @@
 package ian.priorityQueue;
 
-import ian.queue.Quene;
+import ian.queue.Queue;
 
-public class PriorityQueue1<E extends Priority> implements Quene<E> {
+public class PriorityQueue1<E extends Priority> implements Queue<E> {
 
     private E[] array;
     private int size;

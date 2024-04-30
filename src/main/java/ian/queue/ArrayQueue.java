@@ -2,7 +2,7 @@ package ian.queue;
 
 import java.util.Iterator;
 
-class ArrayQueue<E> implements Quene<E>, Iterable<E> {
+class ArrayQueue<E> implements Queue<E>, Iterable<E> {
     private E[] array;
     private int head = 0;
     private int tail = 0;
