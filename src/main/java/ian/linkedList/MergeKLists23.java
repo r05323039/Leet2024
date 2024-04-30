@@ -5,6 +5,8 @@ import ian.minHeap.MinHeap;
 import ian.priorityQueue.PriorityQueue1;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class MergeKLists23 extends ListNode {
     public MergeKLists23(int val, ListNode next) {
@@ -43,6 +45,9 @@ public class MergeKLists23 extends ListNode {
 
     public static ListNode mergeKListsByMinHeap(ListNode[] nodes) {
         MinHeap queue = new MinHeap(nodes.length);
+        //下面是Java原生的小頂堆，傳入比較方式Comparator
+//        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(node -> node.val));
+
         for (ListNode head : nodes) {//將鏈表的頭節點加入小頂堆
             if (head != null) {
                 queue.offer(head);
@@ -55,6 +60,7 @@ public class MergeKLists23 extends ListNode {
             if (min.next != null) {
                 queue.offer(min.next);//鏈表的下一個節點加入小頂堆
             }
+            min.next = null;//切斷節點
             p.next = min;//移除的最小值，加入新的鏈表
             p = min;
         }
