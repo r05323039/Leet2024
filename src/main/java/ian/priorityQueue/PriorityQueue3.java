@@ -4,15 +4,15 @@ import ian.queue.Queue;
 
 public class PriorityQueue3<E extends Priority> implements Queue<E> {
 
-    Priority[] array;
+    E[] array;
     int size;
 
     public PriorityQueue3(int capacity) {
-        this.array = new Priority[capacity];
+        this.array = (E[]) new Priority[capacity];
     }
 
     @Override
-    public boolean offer(E value) {
+    public boolean offer(E value) {// O(log(n)) offer,poll 比較的元素都變少了
         if (isFull()) {
             return false;
         }
@@ -21,7 +21,7 @@ public class PriorityQueue3<E extends Priority> implements Queue<E> {
         while (child > 0 && value.priority() > array[parent].priority()) {
             array[child] = array[parent];
             child = parent;
-            parent = (child - 1) / 2;
+            parent = getParent(child);
         }
         array[child] = value;
         size++;
@@ -33,40 +33,50 @@ public class PriorityQueue3<E extends Priority> implements Queue<E> {
     }
 
     @Override
-    public E poll() {
+    public E poll() {// O(log(n))
         if (isEmpty()) {
             return null;
         }
-        E max = (E) array[0];
-        array[0] = array[size - 1];
-        array[size - 1] = null;
+        swap(0, size - 1);
         size--;
+        Priority polled = array[size];
+        array[size] = null;
 
-        int index = 0;
-        int left = index * 2 + 1;
-        int right = left + 1;
-        E maxx = (E) array[index];
+        dive(0);
 
-
-        return max;
-    }
-
-    private void swap(int a, int b) {
-        Priority temp = array[a];
-        array[a] = array[b];
-        array[b] = temp;
-    }
-
-    private void dive(int i) {
-        Priority left = array[2 * i + 1];
-        Priority right = array[2 * i + 2];
-        
+        return (E) polled;
     }
 
     @Override
     public E peek() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        return array[0];
     }
+
+    private void swap(int a, int b) {
+        E e = array[a];
+        array[a] = array[b];
+        array[b] = e;
+    }
+
+    private void dive(int parent) {
+        int left = 2 * parent + 1;
+        int right = left + 1;
+        int max = parent;
+        if (left < size && array[left].priority() > array[max].priority()) {
+            max = left;
+        }
+        if (right < size && array[right].priority() > array[max].priority()) {
+            max = right;
+        }
+        if (max != parent) {
+            swap(parent, max);
+            dive(max);
+        }
+    }
+
 
     @Override
     public boolean isEmpty() {
