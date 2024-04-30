@@ -12,48 +12,41 @@ public class PriorityQueue2<E extends Priority> implements Quene<E> {
     }
 
     @Override
-    public boolean offer(E value) { //O(1)
+    public boolean offer(E value) { //O(n)
         if (isFull()) {
             return false;
         }
-        array[size++] = value;
+        insert(value);
         return true;
     }
 
+    private void insert(E value) {
+        int i = size - 1;
+        while (i >= 0 && value.priority() < array[i].priority()) {
+            array[i + 1] = array[i];
+            i--;
+        }
+        array[i + 1] = value;
+        size++;
+    }
+
     @Override
-    public E poll() { //O(n)
+    public E poll() { //O(1)
         if (isEmpty()) {
             return null;
         }
-        int i = findTopPriorityIndex();
-        E polled = array[i];
-        remove(i);
+        E polled = array[--size];
+        array[size] = null;
         return polled;
     }
 
-    private void remove(int index) {
-        if (index != size - 1) {
-            System.arraycopy(array, index + 1, array, index, size - 1 - index);
-        }
-        array[--size] = null;
-    }
-
-    private int findTopPriorityIndex() {
-        int max = 0;
-        for (int i = 1; i < size; i++) {
-            if (array[i].priority() > array[max].priority()) {
-                max = i;
-            }
-        }
-        return max;
-    }
 
     @Override
     public E peek() {
         if (isEmpty()) {
             return null;
         }
-        return array[findTopPriorityIndex()];
+        return array[size - 1];
     }
 
     @Override
