@@ -42,7 +42,7 @@ public class MaxHeap<E extends Priority> implements Queue<E> {
         Priority polled = array[size];
         array[size] = null;
 
-        dive(0);
+        siftDown(0);
 
         return (E) polled;
     }
@@ -61,7 +61,7 @@ public class MaxHeap<E extends Priority> implements Queue<E> {
         array[b] = e;
     }
 
-    private void dive(int parent) {
+    private void siftDown(int parent) {
         int left = 2 * parent + 1;
         int right = left + 1;
         int max = parent;
@@ -73,7 +73,7 @@ public class MaxHeap<E extends Priority> implements Queue<E> {
         }
         if (max != parent) {
             swap(parent, max);
-            dive(max);
+            siftDown(max);
         }
     }
 

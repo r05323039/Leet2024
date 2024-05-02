@@ -1,4 +1,4 @@
-package ian.minHeap;
+package ian.heap;
 
 import ian.ListNode;
 import ian.queue.Queue;
@@ -38,7 +38,7 @@ public class MinHeap implements Queue<ListNode> {
         ListNode listNode = array[size];
         array[size] = null;
 
-        dive(0);
+        siftDown(0);
 
         return listNode;
     }
@@ -49,7 +49,7 @@ public class MinHeap implements Queue<ListNode> {
         array[b] = e;
     }
 
-    private void dive(int parent) {
+    private void siftDown(int parent) {
         int left = 2 * parent + 1;
         int right = left + 1;
         int min = parent;
@@ -61,7 +61,7 @@ public class MinHeap implements Queue<ListNode> {
         }
         if (min != parent) {
             swap(parent, min);
-            dive(min);
+            siftDown(min);
         }
     }
 

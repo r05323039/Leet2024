@@ -1,12 +1,9 @@
 package ian.linkedList;
 
 import ian.ListNode;
-import ian.minHeap.MinHeap;
-import ian.priorityQueue.PriorityQueue1;
+import ian.heap.MinHeap;
 
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
 
 public class MergeKLists23 extends ListNode {
     public MergeKLists23(int val, ListNode next) {
