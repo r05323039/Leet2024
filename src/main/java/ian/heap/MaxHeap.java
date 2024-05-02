@@ -46,8 +46,71 @@ public class MaxHeap {
         array[b] = temp;
     }
 
+    public int peek() {
+        return array[0];
+    }
+
+    public int poll() {
+        return poll(0);
+    }
+
+    public int poll(int index) {
+        int polled = array[index];
+        swap(index, size - 1);
+        size--;//基本型別不用指向null，size--就指不到了
+        siftDown(index);
+        return polled;
+    }
+
+    public void replace(int value) {
+        array[0] = value;
+        siftDown(0);
+    }
+
+    public boolean offer(int value) {
+        if (size == array.length) {
+            int[] newInt = new int[array.length + 1];
+            System.arraycopy(array, 0, newInt, 0, array.length);
+            array = newInt;
+        }
+
+        up(value);
+        size++;
+        return true;
+    }
+
+    private void up(int value) {
+        int child = size;
+        while (child > 0) {
+            int parent = (child - 1) / 2;
+            if (array[parent] < value) {
+                array[child] = array[parent];
+                child = parent;
+            } else {
+                break;
+            }
+        }
+        array[child] = value;
+    }
+
+    private void order() {
+        while (size > 1) {
+            swap(0, size - 1);
+            size--;
+            siftDown(0);
+        }
+        size = array.length;
+    }
+
     public static void main(String[] args) {
         MaxHeap maxHeap = new MaxHeap(new int[]{1, 2, 3, 4, 5, 6, 7});
         System.out.println(Arrays.toString(maxHeap.array));
+
+        maxHeap.offer(9);
+        System.out.println(Arrays.toString(maxHeap.array));
+
+        maxHeap.order();
+        System.out.println(Arrays.toString(maxHeap.array));
+
     }
 }
