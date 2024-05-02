@@ -1,11 +1,19 @@
 package ian.heap;
 
+import java.util.Arrays;
+
 public class MaxHeap {
     int array[];
     int size;
 
     public MaxHeap(int capacity) {
         array = new int[capacity];
+    }
+
+    public MaxHeap(int[] array) {
+        this.array = array;
+        this.size = array.length;
+        heapify();
     }
 
     private void heapify() {
@@ -36,5 +44,10 @@ public class MaxHeap {
         int temp = array[a];
         array[a] = array[b];
         array[b] = temp;
+    }
+
+    public static void main(String[] args) {
+        MaxHeap maxHeap = new MaxHeap(new int[]{1, 2, 3, 4, 5, 6, 7});
+        System.out.println(Arrays.toString(maxHeap.array));
     }
 }
