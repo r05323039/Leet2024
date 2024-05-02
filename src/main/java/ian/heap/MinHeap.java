@@ -106,7 +106,7 @@ public class MinHeap {
         MinHeap heap = new MinHeap(new int[]{6, 2, 7, 4, 3, 1, 5});
         System.out.println(Arrays.toString(heap.array));
 
-        heap.offer(9);
+        heap.offer(2);
         System.out.println(Arrays.toString(heap.array));
 
         heap.order();
