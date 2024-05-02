@@ -1,7 +1,7 @@
 package ian.linkedList;
 
 import ian.ListNode;
-import ian.heap.MinHeap;
+import ian.priorityQueue.MinHeap;
 
 import java.util.Arrays;
 

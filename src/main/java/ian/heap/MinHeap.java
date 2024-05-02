@@ -1,89 +1,115 @@
 package ian.heap;
 
-import ian.ListNode;
-import ian.queue.Queue;
+import java.util.Arrays;
 
-public class MinHeap implements Queue<ListNode> {
-    ListNode[] array;
+public class MinHeap {
+    int array[];
     int size;
 
     public MinHeap(int capacity) {
-        array = new ListNode[capacity];
+        array = new int[capacity];
     }
 
-    @Override
-    public boolean offer(ListNode value) {//小頂堆的offer可以確保小至大排序
-        if (isFull()) {
-            return false;
-        }
-        int child = size;
-        int parent = getParent(child);
-        while (child > 0 && value.val < array[parent].val) {
-            array[child] = array[parent];
-            child = parent;
-            parent = getParent(child);
-        }
-        array[child] = value;
-        size++;
-        return true;
+    public MinHeap(int[] array) {
+        this.array = array;
+        this.size = array.length;
+        heapify();
     }
 
-    @Override
-    public ListNode poll() {//每次poll都是最小的
-        if (isEmpty()) {
-            return null;
+    private void heapify() {
+        // 找到最後一個非葉節點 最後一個的parent  (size/2)-1 ，以上所有節點dive一次
+        for (int i = size / 2 - 1; i >= 0; i--) {
+            siftDown(i);
         }
-        size--;
-        swap(0, size);
-        ListNode listNode = array[size];
-        array[size] = null;
-
-        siftDown(0);
-
-        return listNode;
-    }
-
-    private void swap(int a, int b) {
-        ListNode e = array[a];
-        array[a] = array[b];
-        array[b] = e;
     }
 
     private void siftDown(int parent) {
         int left = 2 * parent + 1;
         int right = left + 1;
         int min = parent;
-        if (left < size && array[left].val < array[min].val) {
+        if (left < size && array[left] < array[min]) {
             min = left;
         }
-        if (right < size && array[right].val < array[min].val) {
+        if (right < size && array[right] < array[min]) {
             min = right;
         }
+
         if (min != parent) {
-            swap(parent, min);
+            swap(min, parent);
             siftDown(min);
         }
     }
 
-    @Override
-    public ListNode peek() {
-        if (isEmpty()) {
-            return null;
-        }
+    private void swap(int a, int b) {
+        int temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
+    }
+
+    public int peek() {
         return array[0];
     }
 
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
+    public int poll() {
+        return poll(0);
     }
 
-    @Override
-    public boolean isFull() {
-        return size == array.length;
+    public int poll(int index) {
+        int polled = array[index];
+        swap(index, size - 1);
+        size--;//基本型別不用指向null，size--就指不到了
+        siftDown(index);
+        return polled;
     }
 
-    private int getParent(int child) {
-        return (child - 1) / 2;
+    public void replace(int value) {
+        array[0] = value;
+        siftDown(0);
+    }
+
+    public boolean offer(int value) {
+        if (size == array.length) {
+            int[] newInt = new int[array.length + 1];
+            System.arraycopy(array, 0, newInt, 0, array.length);
+            array = newInt;
+        }
+
+        up(value);
+        size++;
+        return true;
+    }
+
+    private void up(int value) {
+        int child = size;
+        while (child > 0) {
+            int parent = (child - 1) / 2;
+            if (array[parent] > value) {
+                array[child] = array[parent];
+                child = parent;
+            } else {
+                break;
+            }
+        }
+        array[child] = value;
+    }
+
+    private void order() {
+        while (size > 1) {
+            swap(0, size - 1);
+            size--;
+            siftDown(0);
+        }
+        size = array.length;
+    }
+
+    public static void main(String[] args) {
+        MinHeap heap = new MinHeap(new int[]{6, 2, 7, 4, 3, 1, 5});
+        System.out.println(Arrays.toString(heap.array));
+
+        heap.offer(9);
+        System.out.println(Arrays.toString(heap.array));
+
+        heap.order();
+        System.out.println(Arrays.toString(heap.array));
     }
 }
