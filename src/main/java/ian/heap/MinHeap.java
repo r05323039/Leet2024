@@ -16,6 +16,10 @@ public class MinHeap {
         heapify();
     }
 
+    public boolean isFull() {
+        return size == array.length;
+    }
+
     private void heapify() {
         // 找到最後一個非葉節點 最後一個的parent  (size/2)-1 ，以上所有節點dive一次
         for (int i = size / 2 - 1; i >= 0; i--) {
